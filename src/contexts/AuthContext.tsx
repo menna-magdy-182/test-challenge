@@ -40,12 +40,12 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   }, []);
 
   const setSession = useCallback(async (nextSession: AuthSession) => {
-    await authStorage.saveSession(nextSession);
+    authStorage.saveSession(nextSession);
     setSessionState(nextSession);
   }, []);
 
   const logout = useCallback(async () => {
-    await authStorage.clearSession();
+    authStorage.clearSession();
     setSessionState(null);
   }, []);
 

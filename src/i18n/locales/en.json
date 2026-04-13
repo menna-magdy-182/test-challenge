@@ -28,8 +28,38 @@
   },
   "tests": {
     "list": {
-      "title": "Tests List",
-      "subtitle": "App flow foundation is ready."
+      "title": "Available tests",
+      "subtitle": "Browse moderated and unmoderated opportunities.",
+      "loading": "Loading available tests...",
+      "search": {
+        "placeholder": "Search tests"
+      },
+      "results_one": "{{count}} result",
+      "results_other": "{{count}} results",
+      "error": {
+        "title": "Unable to load tests",
+        "subtitle": "Please try again.",
+        "retry": "Retry",
+        "logout": "Log out"
+      },
+      "empty": {
+        "title": "No tests found",
+        "subtitle": "Try a different search or pull to refresh."
+      },
+      "sections": {
+        "moderated": "Moderated tests",
+        "unmoderated": "Unmoderated tests"
+      },
+      "items": {
+        "standardTest": "Standard test",
+        "threeMinuteTest": "3-minute test",
+        "adHocTest": "Ad hoc test",
+        "moderatedSession": "Moderated session",
+        "scheduledModeratedSession": "Scheduled moderated session"
+      },
+      "feeNotAvailable": "Fee not available",
+      "feeFormat": "${{fee}}",
+      "durationFormat": "{{minutes}} min"
     }
   }
 }

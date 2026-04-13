@@ -28,8 +28,38 @@
   },
   "tests": {
     "list": {
-      "title": "Testliste",
-      "subtitle": "Die App-Grundstruktur ist bereit."
+      "title": "Verfügbare Tests",
+      "subtitle": "Moderierte und unmoderierte Möglichkeiten durchsuchen.",
+      "loading": "Tests werden geladen...",
+      "search": {
+        "placeholder": "Tests suchen"
+      },
+      "results_one": "{{count}} Ergebnis",
+      "results_other": "{{count}} Ergebnisse",
+      "error": {
+        "title": "Tests konnten nicht geladen werden",
+        "subtitle": "Bitte versuche es erneut.",
+        "retry": "Erneut versuchen",
+        "logout": "Abmelden"
+      },
+      "empty": {
+        "title": "Keine Tests gefunden",
+        "subtitle": "Versuche eine andere Suche oder ziehe zum Aktualisieren."
+      },
+      "sections": {
+        "moderated": "Moderierte Tests",
+        "unmoderated": "Unmoderierte Tests"
+      },
+      "items": {
+        "standardTest": "Standardtest",
+        "threeMinuteTest": "3-Minuten-Test",
+        "adHocTest": "Ad-hoc-Test",
+        "moderatedSession": "Moderierte Sitzung",
+        "scheduledModeratedSession": "Geplante moderierte Sitzung"
+      },
+      "feeNotAvailable": "Vergütung nicht verfügbar",
+      "feeFormat": "${{fee}}",
+      "durationFormat": "{{minutes}} Min."
     }
   }
 }
