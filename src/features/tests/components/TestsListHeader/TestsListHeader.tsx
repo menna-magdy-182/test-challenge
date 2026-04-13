@@ -48,6 +48,7 @@ export const TestsListHeader = ({
       </View>
 
       <AppInput
+        testID="tests-search-input"
         autoCapitalize="none"
         autoCorrect={false}
         containerStyle={styles.searchInput}

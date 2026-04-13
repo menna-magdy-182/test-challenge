@@ -85,6 +85,7 @@ export const LoginScreen = () => {
             name="email"
             render={({ field: { onBlur, onChange, value } }) => (
               <AppInput
+                testID="login-email-input"
                 autoCapitalize="none"
                 autoCorrect={false}
                 error={errors.email?.message}
@@ -104,6 +105,7 @@ export const LoginScreen = () => {
             name="password"
             render={({ field: { onBlur, onChange, value } }) => (
               <AppInput
+                testID="login-password-input"
                 autoCapitalize="none"
                 autoCorrect={false}
                 error={errors.password?.message}
@@ -125,6 +127,7 @@ export const LoginScreen = () => {
           ) : null}
 
           <AppButton
+            testID="login-submit-button"
             disabled={!isValid}
             loading={loginMutation.isPending}
             onPress={onSubmit}

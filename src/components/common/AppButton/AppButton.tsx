@@ -2,6 +2,7 @@ import React from 'react';
 import {
   ActivityIndicator,
   Pressable,
+  PressableProps,
   StyleProp,
   StyleSheet,
   ViewStyle,
@@ -10,11 +11,9 @@ import {
 import { colors, radius, spacing } from '../../../theme';
 import { AppText } from '../AppText/AppText';
 
-type AppButtonProps = {
+type AppButtonProps = PressableProps & {
   title: string;
-  onPress: () => void;
   loading?: boolean;
-  disabled?: boolean;
   style?: StyleProp<ViewStyle>;
 };
 
@@ -24,6 +23,7 @@ export const AppButton = ({
   loading = false,
   disabled = false,
   style,
+  testID,
 }: AppButtonProps) => {
   const isDisabled = disabled || loading;
 
@@ -32,6 +32,7 @@ export const AppButton = ({
       accessibilityRole="button"
       disabled={isDisabled}
       onPress={onPress}
+      testID={testID}
       style={({ pressed }) => [
         styles.button,
         pressed && !isDisabled ? styles.buttonPressed : undefined,

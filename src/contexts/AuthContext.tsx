@@ -27,16 +27,12 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   const [isRestoringSession, setIsRestoringSession] = useState(true);
 
   useEffect(() => {
-    const restoreSession = async () => {
-      try {
-        const storedSession = await authStorage.getSession();
-        setSessionState(storedSession);
-      } finally {
-        setIsRestoringSession(false);
-      }
-    };
-
-    restoreSession();
+    try {
+      const storedSession = authStorage.getSession();
+      setSessionState(storedSession);
+    } finally {
+      setIsRestoringSession(false);
+    }
   }, []);
 
   const setSession = useCallback(async (nextSession: AuthSession) => {

@@ -86,6 +86,7 @@ export const TestsListScreen = () => {
   return (
     <AppScreen>
       <SectionList
+        testID="tests-section-list"
         contentContainerStyle={styles.listContent}
         keyboardShouldPersistTaps="handled"
         keyExtractor={item => item.id}
