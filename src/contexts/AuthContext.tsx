@@ -8,6 +8,7 @@ import React, {
   useState,
 } from 'react';
 
+import { authSessionEvents } from '@/api/authSessionEvents';
 import { authStorage } from '@/features/auth/store/authStorage';
 import type { AuthSession } from '@/features/auth/types/auth.types';
 
@@ -47,6 +48,14 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     await authStorage.clearSession();
     setSessionState(null);
   }, []);
+
+  useEffect(() => {
+    authSessionEvents.setOnUnauthorized(logout);
+
+    return () => {
+      authSessionEvents.setOnUnauthorized(null);
+    };
+  }, [logout]);
 
   const value = useMemo(
     () => ({

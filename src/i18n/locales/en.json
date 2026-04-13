@@ -1,0 +1,35 @@
+{
+  "common": {
+    "email": "Email",
+    "password": "Password",
+    "errors": {
+      "genericError": "Something went wrong. Please try again.",
+      "validationError": "Please check your input and try again."
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome back",
+      "subtitle": "Sign in to view your available tests.",
+      "emailPlaceholder": "Enter your email",
+      "passwordPlaceholder": "Enter your password",
+      "submitButton": "Log in",
+      "testCredentials": {
+        "title": "Test credentials",
+        "email": "Email: jdouglas@example.com",
+        "password": "Password: 123123"
+      }
+    },
+    "validation": {
+      "emailInvalid": "Please enter a valid email address",
+      "passwordRequired": "Password is required",
+      "passwordMinLength": "Password must be at least 6 characters"
+    }
+  },
+  "tests": {
+    "list": {
+      "title": "Tests List",
+      "subtitle": "App flow foundation is ready."
+    }
+  }
+}

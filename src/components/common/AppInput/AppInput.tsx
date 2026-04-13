@@ -1,20 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
+  Pressable,
   StyleProp,
-  StyleSheet,
   TextInput,
   TextInputProps,
   View,
   ViewStyle,
 } from 'react-native';
 
-import { colors, radius, spacing } from '../../../theme';
+import { colors } from '../../../theme';
 import { AppText } from '../AppText/AppText';
+import styles from './AppInput.styles';
 
 type AppInputProps = TextInputProps & {
   label?: string;
   error?: string;
   containerStyle?: StyleProp<ViewStyle>;
+  showPasswordToggle?: boolean;
 };
 
 export const AppInput = ({
@@ -22,8 +24,14 @@ export const AppInput = ({
   error,
   containerStyle,
   style,
+  secureTextEntry,
   ...rest
 }: AppInputProps) => {
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+  const togglePasswordVisibility = () =>
+    setIsPasswordVisible(previous => !previous);
+
   return (
     <View style={containerStyle}>
       {label ? (
@@ -32,11 +40,32 @@ export const AppInput = ({
         </AppText>
       ) : null}
 
-      <TextInput
-        {...rest}
-        placeholderTextColor={colors.inputPlaceholder}
-        style={[styles.input, error ? styles.inputError : undefined, style]}
-      />
+      <View
+        style={[
+          styles.inputContainer,
+          error ? styles.inputContainerError : undefined,
+        ]}
+      >
+        <TextInput
+          {...rest}
+          placeholderTextColor={colors.inputPlaceholder}
+          secureTextEntry={secureTextEntry ? !isPasswordVisible : false}
+          style={[styles.input, style]}
+        />
+
+        {secureTextEntry ? (
+          <Pressable
+            accessibilityRole="button"
+            hitSlop={8}
+            onPress={togglePasswordVisibility}
+            style={styles.toggleButton}
+          >
+            <AppText variant="label" style={styles.toggleText}>
+              {isPasswordVisible ? 'Hide' : 'Show'}
+            </AppText>
+          </Pressable>
+        ) : null}
+      </View>
 
       {error ? (
         <AppText variant="caption" style={styles.errorText}>
@@ -46,25 +75,3 @@ export const AppInput = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  label: {
-    marginBottom: spacing.xs,
-  },
-  input: {
-    minHeight: 52,
-    borderWidth: 1,
-    borderColor: colors.inputBorder,
-    borderRadius: radius.md,
-    paddingHorizontal: spacing.md,
-    backgroundColor: colors.inputBackground,
-    color: colors.textPrimary,
-  },
-  inputError: {
-    borderColor: colors.error,
-  },
-  errorText: {
-    marginTop: spacing.xs,
-    color: colors.error,
-  },
-});

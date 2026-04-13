@@ -1,0 +1,35 @@
+{
+  "common": {
+    "email": "E-Mail",
+    "password": "Passwort",
+    "errors": {
+      "genericError": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+      "validationError": "Bitte überprüfe deine Eingaben und versuche es erneut."
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Willkommen zurück",
+      "subtitle": "Melden Sie sich an, um Ihre verfügbaren Tests zu sehen.",
+      "emailPlaceholder": "E-Mail eingeben",
+      "passwordPlaceholder": "Passwort eingeben",
+      "submitButton": "Anmelden",
+      "testCredentials": {
+        "title": "Testdaten",
+        "email": "E-Mail: jdouglas@example.com",
+        "password": "Passwort: 123123"
+      }
+    },
+    "validation": {
+      "emailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+      "passwordRequired": "Passwort ist erforderlich",
+      "passwordMinLength": "Das Passwort muss mindestens 6 Zeichen lang sein"
+    }
+  },
+  "tests": {
+    "list": {
+      "title": "Testliste",
+      "subtitle": "Die App-Grundstruktur ist bereit."
+    }
+  }
+}
