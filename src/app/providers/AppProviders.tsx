@@ -3,6 +3,7 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { colors } from '../../theme';
+import { AuthProvider } from '@/contexts/AuthContext';
 
 const navigationTheme = {
   ...DefaultTheme,
@@ -34,9 +35,11 @@ export const AppProviders = ({ children }: PropsWithChildren) => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <NavigationContainer theme={navigationTheme}>
-        {children}
-      </NavigationContainer>
+      <AuthProvider>
+        <NavigationContainer theme={navigationTheme}>
+          {children}
+        </NavigationContainer>
+      </AuthProvider>
     </QueryClientProvider>
   );
 };

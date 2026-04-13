@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
-import { AppScreen, AppText } from '@/src/components/common';
-import { colors, spacing } from '@/src/theme';
+import { AppScreen, AppText } from '@/components/common';
+import { colors, spacing } from '@/theme';
 
 export const LoginScreen = () => {
   return (
