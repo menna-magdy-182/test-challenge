@@ -7,6 +7,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { colors } from '../../../theme';
 import { AppText } from '../AppText/AppText';
@@ -16,7 +17,9 @@ type AppInputProps = TextInputProps & {
   label?: string;
   error?: string;
   containerStyle?: StyleProp<ViewStyle>;
-  showPasswordToggle?: boolean;
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
+  onPressRightIcon?: () => void;
 };
 
 export const AppInput = ({
@@ -25,12 +28,36 @@ export const AppInput = ({
   containerStyle,
   style,
   secureTextEntry,
+  leftIcon,
+  rightIcon,
+  onPressRightIcon,
   ...rest
 }: AppInputProps) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
+  const isSecureField = Boolean(secureTextEntry);
+
   const togglePasswordVisibility = () =>
     setIsPasswordVisible(previous => !previous);
+
+  const resolvedRightIcon = secureTextEntry ? (
+    <Ionicons
+      color={colors.textSecondary}
+      name={isPasswordVisible ? 'eye-outline' : 'eye-off-outline'}
+      size={20}
+    />
+  ) : (
+    rightIcon
+  );
+
+  const handleRightIconPress = () => {
+    if (isSecureField) {
+      togglePasswordVisibility();
+      return;
+    }
+
+    onPressRightIcon?.();
+  };
 
   return (
     <View style={containerStyle}>
@@ -46,23 +73,25 @@ export const AppInput = ({
           error ? styles.inputContainerError : undefined,
         ]}
       >
+        {leftIcon ? (
+          <View style={styles.leftIconContainer}>{leftIcon}</View>
+        ) : null}
+
         <TextInput
           {...rest}
           placeholderTextColor={colors.inputPlaceholder}
-          secureTextEntry={secureTextEntry ? !isPasswordVisible : false}
+          secureTextEntry={isSecureField ? !isPasswordVisible : false}
           style={[styles.input, style]}
         />
 
-        {secureTextEntry ? (
+        {resolvedRightIcon ? (
           <Pressable
             accessibilityRole="button"
             hitSlop={8}
-            onPress={togglePasswordVisibility}
-            style={styles.toggleButton}
+            onPress={handleRightIconPress}
+            style={styles.rightIconButton}
           >
-            <AppText variant="label" style={styles.toggleText}>
-              {isPasswordVisible ? 'Hide' : 'Show'}
-            </AppText>
+            {resolvedRightIcon}
           </Pressable>
         ) : null}
       </View>

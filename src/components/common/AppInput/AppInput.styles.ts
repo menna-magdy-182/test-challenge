@@ -1,5 +1,6 @@
-import { colors, radius, spacing } from '@/theme';
 import { StyleSheet } from 'react-native';
+
+import { colors, radius, spacing } from '../../../theme';
 
 const styles = StyleSheet.create({
   label: {
@@ -18,18 +19,21 @@ const styles = StyleSheet.create({
   inputContainerError: {
     borderColor: colors.error,
   },
+  leftIconContainer: {
+    marginRight: spacing.sm,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   input: {
     flex: 1,
     minHeight: 50,
     color: colors.textPrimary,
     paddingVertical: spacing.sm,
   },
-  toggleButton: {
+  rightIconButton: {
     marginLeft: spacing.sm,
-    paddingVertical: spacing.xs,
-  },
-  toggleText: {
-    color: colors.primary,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   errorText: {
     marginTop: spacing.xs,
