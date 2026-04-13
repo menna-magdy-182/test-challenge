@@ -1,97 +1,96 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# TestChallengeApp
 
-# Getting Started
+A React Native mobile application built with React Native 0.85 and TypeScript.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Tech Stack
 
-## Step 1: Start Metro
+| Category             | Library                            |
+| -------------------- | ---------------------------------- |
+| Framework            | React Native 0.85 / React 19       |
+| Language             | TypeScript                         |
+| Navigation           | React Navigation v7 (Native Stack) |
+| Data Fetching        | TanStack React Query v5            |
+| HTTP Client          | Axios                              |
+| Forms                | React Hook Form + Zod              |
+| Storage              | react-native-mmkv                  |
+| Internationalization | i18next + react-i18next            |
+| Icons                | react-native-vector-icons          |
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Project Structure
 
-To start the Metro dev server, run the following command from the root of your React Native project:
-
-```sh
-# Using npm
-npm start
-
-# OR using Yarn
-yarn start
+```
+src/
+├── api/                  # Axios client and API layer
+├── app/
+│   ├── navigation/       # Root navigator and route definitions
+│   └── providers/        # App-level providers (QueryClient, i18n, etc.)
+├── components/
+│   └── common/           # Shared UI components (AppButton, AppInput, AppText, AppScreen)
+├── contexts/             # React contexts
+├── features/
+│   ├── auth/             # Login screen, auth hooks, validation, token store
+│   └── tests/            # Tests list screen, test card, hooks, utils
+├── i18n/
+│   └── locales/          # Translation files
+├── storage/              # MMKV storage helpers
+├── theme/                # Colors, typography, spacing
+├── types/                # Shared TypeScript types
+└── test-utils/           # Custom render helpers for testing
 ```
 
-## Step 2: Build and run your app
+## Getting Started
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+### Prerequisites
 
-### Android
+- Node >= 22.11.0
+- Ruby (for CocoaPods on iOS)
+- Android Studio / Xcode
+
+### Install dependencies
 
 ```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
+yarn install
 ```
 
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+### iOS — install native dependencies
 
 ```sh
 bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
 bundle exec pod install
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+### Start Metro
 
 ```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
+yarn start
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+### Run on device / simulator
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+```sh
+# iOS
+yarn ios
 
-## Step 3: Modify your app
+# Android
+yarn android
+```
 
-Now that you have successfully run the app, let's make changes!
+## Available Scripts
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+| Script           | Description                    |
+| ---------------- | ------------------------------ |
+| `yarn start`     | Start Metro bundler            |
+| `yarn ios`       | Build and run on iOS           |
+| `yarn android`   | Build and run on Android       |
+| `yarn test`      | Run Jest test suite            |
+| `yarn lint`      | Run ESLint                     |
+| `yarn lint:fix`  | Run ESLint with auto-fix       |
+| `yarn format`    | Format all files with Prettier |
+| `yarn typecheck` | Run TypeScript type checking   |
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+## Code Quality
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+- **ESLint** with React, React Native, React Hooks, and Prettier plugins
+- **Prettier** for consistent formatting
+- **Husky** pre-commit hooks with **lint-staged** (lint + format on staged files)
+- **Commitlint** enforcing Conventional Commits
